@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    private var homeViewModel : HomeViewModel!
+    private var viewModel: HomeViewModel!
     var pokemonList = [Pokemon]()
     
     override func viewDidLoad() {
@@ -21,9 +21,9 @@ class HomeViewController: UIViewController {
     }
     
     func callToViewModel() {
-        self.homeViewModel = HomeViewModel()
+        self.viewModel = HomeViewModel()
         DispatchQueue.main.async {
-            self.pokemonList = self.homeViewModel.pokemonList
+            self.pokemonList = self.viewModel.pokemonList
 //            print("UI view pokemonlist\(self.pokemonList)")
         }
         

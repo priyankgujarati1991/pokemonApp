@@ -7,26 +7,25 @@
 
 import Foundation
 
-class HomeViewModel: NSObject {
+class HomeViewModel {
     
-    private var pokManager : PokemonManager!
+    private var pokmonManager: PokemonManager
     var pokemonList = [Pokemon]()
     let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
     
-    override init(){
-        super.init()
-        self.pokManager = PokemonManager()
+     init() {
+        self.pokmonManager = PokemonManager()
         self.getPokemonList()
     }
     
-    func getPokemonList(){
-        self.pokManager.getPokemon{ (data) in
+    func getPokemonList() {
+        self.pokmonManager.getPokemon{ (data) in
             self.pokemonList = data
             self.getPokemonIndex()
         }
     }
     
-    func getPokemonIndex(){
+    func getPokemonIndex() {
 //        let group = DispatchGroup()
         let semaphore = DispatchSemaphore(value: 1)
         var item = 0
@@ -35,7 +34,7 @@ class HomeViewModel: NSObject {
             concurrentQueue.async{
                 semaphore.wait()
                 item = index + 1
-                self.pokManager.getDetailPokemon(id: item){(detailPokemon) in
+                self.pokmonManager.getDetailPokemon(id: item){(detailPokemon) in
                     print(detailPokemon)
                 }
                 semaphore.signal()

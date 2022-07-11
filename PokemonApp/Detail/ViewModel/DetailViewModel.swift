@@ -6,20 +6,19 @@
 //
 
 import Foundation
-class DetailViewModel: NSObject {
+class DetailViewModel {
     
     
-    private var pokManager : PokemonManager!
+    private var pokemonManager: PokemonManager!
 //    var pokemonList = [Pokemon]()
     
-    override init(){
-        super.init()
-        self.pokManager = PokemonManager()
+     init() {
+        self.pokemonManager = PokemonManager()
         self.getPokemonDetailList()
     }
     
-    func getPokemonDetailList(){
-        self.pokManager.getDetailPokemon(id: 1){ (data) in
+    func getPokemonDetailList() {
+        self.pokemonManager.getDetailPokemon(id: 1){ (data) in
 //            self.pokemonList = data
         }
     }
