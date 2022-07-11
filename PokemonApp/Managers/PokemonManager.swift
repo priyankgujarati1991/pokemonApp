@@ -7,15 +7,16 @@
 
 import Foundation
 
-class PokemonManager: NSObject {
+class PokemonManager {
     
+    private let baseURL = "https://pokeapi.co/api/v2/pokemon"
     
     func getPokemon(completionGetPokemonList : @escaping([Pokemon]) ->()) {
         
-        Helpers.fetchData(url: "https://pokeapi.co/api/v2/pokemon?limit=20", model: PokemonModel.self){ [self] completion in
-
-//            self.pokemonList = completion.results
-//            let tempcompletiongetPokemon = completion.results
+        print(baseURL.appending("?limit=\(20)"))
+        
+        Helpers.fetchData(url: baseURL.appending("?limit=\(20)"), model: PokemonModel.self){ [self] completion in
+            
             completionGetPokemonList(completion.results)
 
         }failure: { (error) in
@@ -25,7 +26,7 @@ class PokemonManager: NSObject {
     
     func getDetailPokemon(id: Int, completionGetPokemonDetail: @escaping(PokemonDetailModel) -> ()) {
         
-        Helpers.fetchData(url: "https://pokeapi.co/api/v2/pokemon/\(id)/", model: PokemonDetailModel.self){ [self] completion in
+        Helpers.fetchData(url: baseURL.appending("/\(id)/"), model: PokemonDetailModel.self){ [self] completion in
             
             completionGetPokemonDetail(completion)
 
