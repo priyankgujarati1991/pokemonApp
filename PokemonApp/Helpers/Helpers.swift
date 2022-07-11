@@ -9,9 +9,7 @@ import Foundation
 
 class Helpers {
     
-    static let shared = Helpers()
-    
-    func fetchData<T: Decodable>(url: String, model: T.Type, completion:@escaping(T) -> (), failure:@escaping(Error) -> ()) {
+    static func fetchData<T: Decodable>(url: String, model: T.Type, completion:@escaping(T) -> (), failure:@escaping(Error) -> ()) {
             guard let url = URL(string: url) else { return }
 
             URLSession.shared.dataTask(with: url) { (data, response, error) in
