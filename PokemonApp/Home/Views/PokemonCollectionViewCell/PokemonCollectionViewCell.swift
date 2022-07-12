@@ -12,7 +12,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     
     var pokemonName: UILabel = {
             let label = UILabel()
-            label.textColor = UIColor.lightGray
+            label.textColor = UIColor.white
             label.font = UIFont.systemFont(ofSize: 14)
 //            label.text = "424 likes"
             label.translatesAutoresizingMaskIntoConstraints = false

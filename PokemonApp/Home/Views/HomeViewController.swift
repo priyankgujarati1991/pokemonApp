@@ -15,6 +15,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
     private var viewModel: HomeViewModel!
     var pokemonList = [Pokemon]()
     var pokemonDetailList = [PokemonDetailModel] ()
+    var pokemonNameImage = [String] ()
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         DispatchQueue.main.async {
             self.pokemonList = self.viewModel.pokemonList
             self.pokemonDetailList = self.viewModel.pokemonDetailList
+            self.collectionView.reloadData()
 //            print("UI view pokemonlist\(self.pokemonList)")
         }
         
@@ -47,15 +49,18 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.pokemonDetailList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.identifier, for: indexPath) as! PokemonCollectionViewCell
-//        let pokemon =  self.pokemonList[indexPath.item]
-        cell.pokemonName.text = "Testing"
+        let pokemon =  self.pokemonDetailList[indexPath.item]
+        print(pokemon)
+//        cell.pokemonName.text = pokemon.name
+        cell.backgroundColor = .green
 //        let pokemonDetail = self.pokemonDetailList[indexPath.item]
-//        cell.pokemonFrontDefaultImageView.ima
+//        let url = URL(string: pokemonDetail.sprites.other.home.front_default)
+//        cell.pokemonFrontDefaultImageView.load(url: url!)
         
 //        cell.pokemonFrontDefaultImageView = pokemon.
         return cell

@@ -37,7 +37,7 @@ class HomeViewModel {
                 item = index + 1
                 self.pokmonManager.getDetailPokemon(id: item){(detailPokemon) in
                     print(detailPokemon, element)
-                    self.pokemonDetailList.append(detailPokemon)
+                    
                     group.leave()
                 }
 //                semaphore.signal()
