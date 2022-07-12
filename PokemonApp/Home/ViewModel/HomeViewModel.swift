@@ -36,7 +36,8 @@ class HomeViewModel {
 //                semaphore.wait()
                 item = index + 1
                 self.pokmonManager.getDetailPokemon(id: item){(detailPokemon) in
-                    print(detailPokemon)
+                    print(detailPokemon, element)
+                    
                     group.leave()
                 }
 //                semaphore.signal()

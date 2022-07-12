@@ -13,6 +13,12 @@ struct PokemonDetailModel: Codable {
     let height: Int
     let weight: Int
     let sprites: sprites
+    let forms: [forms]
+}
+
+//MARK - Forms
+struct forms: Codable {
+    let name: String
 }
 
 // MARK: - Sprites
