@@ -9,13 +9,10 @@ import Foundation
 import UIKit
 
 class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-   
-    
-    
+
     private var viewModel: HomeViewModel!
-    var pokemonList = [Pokemon]()
-    var pokemonDetailList = [PokemonDetailModel] ()
     var pokemonNameImage = [String] ()
+    
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     override func viewDidLoad() {
