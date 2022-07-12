@@ -43,7 +43,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
         pokemonName.topAnchor.constraint(equalTo: pokemonFrontDefaultImageView.lastBaselineAnchor, constant: 0).isActive = true
 //        pokemonName.heightAnchor.constraint(equalToConstant: 36).isActive = true
 //        pokemonName.widthAnchor.constraint(equalToConstant: 36).isActive = true
-        pokemonName.frame = contentView.bounds
+//        pokemonName.frame = contentView.bounds
     }
     
     override func prepareForReuse() {
