@@ -11,6 +11,7 @@ class HomeViewModel {
     
     private var pokmonManager: PokemonManager
     var pokemonList = [Pokemon] ()
+    var pokemonDetailList = [PokemonDetailModel] ()
     let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
     
      init() {
