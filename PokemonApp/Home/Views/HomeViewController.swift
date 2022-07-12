@@ -20,6 +20,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         collectionView.register(PokemonCollectionViewCell.self, forCellWithReuseIdentifier: PokemonCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         
         self.viewModel = HomeViewModel()
@@ -41,15 +42,28 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         let pokemon =  self.viewModel.pokemonList[indexPath.item]
         
         cell.pokemonName.text = pokemon.name
-        cell.backgroundColor = .green
-//        let pokemonDetail = self.pokemonDetailList[indexPath.item]
+        
         if let detail = pokemon.model, let url = URL(string: detail.sprites.other.home.front_default){
+            cell.pokemonFrontDefaultImageView.backgroundColor = .lightGray
             cell.pokemonFrontDefaultImageView.load(url: url)
         }
-//        
-        
-//        cell.pokemonFrontDefaultImageView = pokemon.
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.size.width/2)-2, height: (view.frame.size.width/2)-2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+    }
 }

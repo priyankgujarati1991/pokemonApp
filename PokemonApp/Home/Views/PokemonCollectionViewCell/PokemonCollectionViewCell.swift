@@ -12,7 +12,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     
     var pokemonName: UILabel = {
             let label = UILabel()
-            label.textColor = UIColor.white
+            label.textColor = UIColor.black
             label.font = UIFont.systemFont(ofSize: 14)
 //            label.text = "424 likes"
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +29,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(pokemonName)
+        contentView.addSubview(pokemonFrontDefaultImageView)
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +39,11 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         pokemonFrontDefaultImageView.frame = contentView.bounds
+        pokemonName.leftAnchor.constraint(equalTo: pokemonFrontDefaultImageView.centerXAnchor, constant: 0).isActive = true
+        pokemonName.topAnchor.constraint(equalTo: pokemonFrontDefaultImageView.lastBaselineAnchor, constant: 10).isActive = true
+//        pokemonName.heightAnchor.constraint(equalToConstant: 36).isActive = true
+//        pokemonName.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        pokemonName.frame = contentView.bounds
     }
     
     override func prepareForReuse() {
