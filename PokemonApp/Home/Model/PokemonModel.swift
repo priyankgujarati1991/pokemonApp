@@ -17,4 +17,5 @@ struct PokemonModel: Codable {
 struct Pokemon: Codable {
     let name: String
     let url: String
+    var model : PokemonDetailModel?
 }

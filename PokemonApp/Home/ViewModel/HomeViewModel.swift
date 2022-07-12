@@ -5,13 +5,16 @@
 //  Created by Priyank on 07/07/22.
 //
 
+import UIKit
 import Foundation
 
 class HomeViewModel {
     
     private var pokmonManager: PokemonManager
     var pokemonList = [Pokemon] ()
-    var pokemonDetailList = [PokemonDetailModel] ()
+    
+    var collView : UICollectionView?
+    
     let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
     
      init() {
@@ -37,15 +40,16 @@ class HomeViewModel {
                 item = index + 1
                 self.pokmonManager.getDetailPokemon(id: item){(detailPokemon) in
                     print(detailPokemon, element)
-                    
+                    self.pokemonList[index].model = detailPokemon
                     group.leave()
                 }
 //                semaphore.signal()
-//                group.leave()
+                
             }
         }
         group.notify(queue: DispatchQueue.main) {
             print("completion done")
+            self.collView?.reloadData()
         }
     }
     
