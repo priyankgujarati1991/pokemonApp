@@ -38,9 +38,9 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        pokemonFrontDefaultImageView.frame = contentView.bounds
-        pokemonName.leftAnchor.constraint(equalTo: pokemonFrontDefaultImageView.centerXAnchor, constant: 0).isActive = true
-        pokemonName.topAnchor.constraint(equalTo: pokemonFrontDefaultImageView.lastBaselineAnchor, constant: 10).isActive = true
+        pokemonFrontDefaultImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width - 20, height:contentView.frame.size.height  - 20)
+        pokemonName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
+        pokemonName.topAnchor.constraint(equalTo: pokemonFrontDefaultImageView.lastBaselineAnchor, constant: 0).isActive = true
 //        pokemonName.heightAnchor.constraint(equalToConstant: 36).isActive = true
 //        pokemonName.widthAnchor.constraint(equalToConstant: 36).isActive = true
         pokemonName.frame = contentView.bounds

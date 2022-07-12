@@ -46,6 +46,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         if let detail = pokemon.model, let url = URL(string: detail.sprites.other.home.front_default){
             cell.pokemonFrontDefaultImageView.backgroundColor = .lightGray
             cell.pokemonFrontDefaultImageView.load(url: url)
+        }else{
+            cell.pokemonFrontDefaultImageView.image = UIImage()
         }
         return cell
     }
