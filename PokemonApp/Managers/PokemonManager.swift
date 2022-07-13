@@ -11,13 +11,11 @@ class PokemonManager {
     
     private let baseURL = "https://pokeapi.co/api/v2/pokemon"
     
-    func getPokemon(completionGetPokemonList : @escaping([Pokemon]) ->()) {
+    func getPokemon(id: Int, completionGetPokemonList : @escaping([Pokemon],_ count:Int) ->()) {
         
-        print(baseURL.appending("?limit=\(20)"))
-        
-        Helpers.fetchData(url: baseURL.appending("?limit=\(20)"), model: PokemonModel.self){ [self] completion in
+        Helpers.fetchData(url: baseURL.appending("?limit=\(id)"), model: PokemonModel.self){ [self] completion in
             
-            completionGetPokemonList(completion.results)
+            completionGetPokemonList(completion.results, completion.count)
 
         }failure: { (error) in
             print(error)

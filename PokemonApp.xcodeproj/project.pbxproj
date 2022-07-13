@@ -26,6 +26,7 @@
 		9922873D287E894E00210E30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9922873C287E894E00210E30 /* Kingfisher */; };
 		99228742287E8B5F00210E30 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99228741287E8B5F00210E30 /* HomeViewController.xib */; };
 		99228753287E9E7A00210E30 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99228752287E9E7A00210E30 /* DetailViewController.xib */; };
+		99228759287EACEF00210E30 /* ESPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 99228758287EACEF00210E30 /* ESPullToRefresh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99228759287EACEF00210E30 /* ESPullToRefresh in Frameworks */,
 				9922873D287E894E00210E30 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +276,7 @@
 			name = PokemonApp;
 			packageProductDependencies = (
 				9922873C287E894E00210E30 /* Kingfisher */,
+				99228758287EACEF00210E30 /* ESPullToRefresh */,
 			);
 			productName = PokemonApp;
 			productReference = 992286052876B24C00210E30 /* PokemonApp.app */;
@@ -348,6 +351,7 @@
 			mainGroup = 992285FC2876B24C00210E30;
 			packageReferences = (
 				9922873B287E894E00210E30 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				99228757287EACEF00210E30 /* XCRemoteSwiftPackageReference "pull-to-refresh" */,
 			);
 			productRefGroup = 992286062876B24C00210E30 /* Products */;
 			projectDirPath = "";
@@ -739,6 +743,14 @@
 				minimumVersion = 7.3.0;
 			};
 		};
+		99228757287EACEF00210E30 /* XCRemoteSwiftPackageReference "pull-to-refresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eggswift/pull-to-refresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -746,6 +758,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9922873B287E894E00210E30 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		99228758287EACEF00210E30 /* ESPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99228757287EACEF00210E30 /* XCRemoteSwiftPackageReference "pull-to-refresh" */;
+			productName = ESPullToRefresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

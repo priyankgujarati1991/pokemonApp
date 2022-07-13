@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 import Kingfisher
+import ESPullToRefresh
 
 class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    private let viewModel: HomeViewModel
-    var pokemonNameImage = [String] ()
     
+    private let viewModel: HomeViewModel
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    var pokemonNameImage = [String] ()
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -51,20 +51,20 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
         cell.pokemonName.text = pokemon.name
         
-        if let detail = pokemon.model, let url = URL(string: detail.sprites.other.home.front_default){
+        if let detail = pokemon.detailmodel, let url = URL(string: detail.sprites.other.home.front_default) {
             cell.pokemonFrontDefaultImageView.backgroundColor = .lightGray
             KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { result in
                 switch result {
-                    case .success(let value):
-                    print("Image: \(value.image). Got from: \(value.cacheType)")
-                        cell.pokemonFrontDefaultImageView.image = value.image
-                    case .failure(let error):
-                        print("Error: \(error)")
-                    }
+                case .success(let value):
+                    cell.pokemonFrontDefaultImageView.image = value.image
+                case .failure(let error):
+                    print("Error: \(error)")
                 }
-        }else{
+            }
+        }else {
             cell.pokemonFrontDefaultImageView.image = UIImage()
         }
+        
         return cell
     }
     
@@ -83,5 +83,11 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == self.viewModel.pokemonList.count - 1 {  //pokemonList count
+            self.viewModel.infiniteScrolling()
+        }
     }
 }

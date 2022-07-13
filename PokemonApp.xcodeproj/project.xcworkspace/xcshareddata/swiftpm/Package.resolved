@@ -9,6 +9,15 @@
           "revision": "2235a22ca249199cb736237f4bb9cc12b6ed416a",
           "version": "7.3.0"
         }
+      },
+      {
+        "package": "ESPullToRefresh",
+        "repositoryURL": "https://github.com/eggswift/pull-to-refresh.git",
+        "state": {
+          "branch": null,
+          "revision": "a858aaeb44abc6428af916e8496429d244fac053",
+          "version": "2.9.3"
+        }
       }
     ]
   },
