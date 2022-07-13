@@ -33,13 +33,12 @@ class HomeViewModel {
         let group = DispatchGroup()
 //        let semaphore = DispatchSemaphore(value: 1)
         var item = 0
-        for (index, element) in self.pokemonList.enumerated() {
+        for (index, _) in self.pokemonList.enumerated() {
             group.enter()
             concurrentQueue.async{
 //                semaphore.wait()
                 item = index + 1
                 self.pokmonManager.getDetailPokemon(id: item){(detailPokemon) in
-                    print(detailPokemon, element)
                     self.pokemonList[index].model = detailPokemon
                     group.leave()
                 }

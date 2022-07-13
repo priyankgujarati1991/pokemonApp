@@ -7,13 +7,23 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    private var viewModel: HomeViewModel!
+    private let viewModel: HomeViewModel
     var pokemonNameImage = [String] ()
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "HomeViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +32,6 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
-        
-        self.viewModel = HomeViewModel()
         self.viewModel.collView = self.collectionView
     }
     
@@ -45,7 +53,15 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
         if let detail = pokemon.model, let url = URL(string: detail.sprites.other.home.front_default){
             cell.pokemonFrontDefaultImageView.backgroundColor = .lightGray
-            cell.pokemonFrontDefaultImageView.load(url: url)
+            KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { result in
+                switch result {
+                    case .success(let value):
+                    print("Image: \(value.image). Got from: \(value.cacheType)")
+                        cell.pokemonFrontDefaultImageView.image = value.image
+                    case .failure(let error):
+                        print("Error: \(error)")
+                    }
+                }
         }else{
             cell.pokemonFrontDefaultImageView.image = UIImage()
         }
