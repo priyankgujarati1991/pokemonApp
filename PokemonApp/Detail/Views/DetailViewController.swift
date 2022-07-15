@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import UIKit
+
+class DetailViewController: UIViewController {
+    
+    var pokemonDetail: PokemonDetailModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print(pokemonDetail.height)
+        print(pokemonDetail.weight)
+        print(pokemonDetail.id)
+    }
+}

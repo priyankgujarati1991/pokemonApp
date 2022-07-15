@@ -32,6 +32,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
+        self.navigationController?.navigationBar.topItem?.title = "Pokemon"
         self.viewModel.collView = self.collectionView
     }
     
@@ -89,5 +90,14 @@ class HomeViewController: UIViewController,UICollectionViewDelegate, UICollectio
         if indexPath.row == self.viewModel.pokemonList.count - 1 {  //pokemonList count
             self.viewModel.infiniteScrolling()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let pokemon =  self.viewModel.pokemonList[indexPath.item]
+        let pokemonDetail = pokemon.detailmodel
+        let detailVC  = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        detailVC.pokemonDetail = pokemonDetail
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
