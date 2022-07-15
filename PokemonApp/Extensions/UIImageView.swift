@@ -2,7 +2,7 @@
 //  UIImageView.swift
 //  PokemonApp
 //
-//  Created by Priyank on 12/07/22.
+//  Created by Harsh on 12/07/22.
 //
 
 import Foundation
